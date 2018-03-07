@@ -9,7 +9,11 @@ module FormRelayer
       raw_params.delete('utf8')
       raw_params.delete('authenticity_token')
       raw_params.each do |name, value|
-        tags << hidden_field_tag(name, value)
+        if value.is_a?(Array)
+          value.each { |v| tags << hidden_field_tag(name, v) }
+        else
+          tags << hidden_field_tag(name, value)
+        end
       end
 
       safe_join(tags)

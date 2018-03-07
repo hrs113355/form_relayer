@@ -30,5 +30,9 @@ describe FormRelayer do
       @view.stubs(:request).returns(mock('request', raw_post:'utf8=%E2%9C%93&authenticity_token=ABCD1234%3D&order%5Bshipping%5D=1'))
       assert_equal %{<input id="order_shipping" name="order[shipping]" type="hidden" value="1" />}, @view.relay_received_post_params
     end
+    it 'handles multiple values (array) for one param' do
+      @view.stubs(:request).returns(mock('request', raw_post:'a[]=1&a[]=2'))
+      assert_equal %{<input id="a[]" name="a[]" type="hidden" value="1" /><input id="a[]" name="a[]" type="hidden" value="2" />}, @view.relay_received_post_params
+    end
   end
 end
