@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", '>= 3.1'
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "bundler", ">= 1.6"
   spec.add_development_dependency "rake", '~> 10.3'
   spec.add_development_dependency 'rubygems-tasks', '~> 0.2'
   spec.add_development_dependency 'mocha', '~> 1.0.0'
